@@ -1,0 +1,10 @@
+[init]
+	defaultBranch = main
+[alias]
+  st = status
+  ci = commit
+  br = branch
+  ll = log --pretty=format:'%h %ad | %s%d [%Cgreen%an%Creset]' --graph --date=short
+  ph = push
+  pl = pull
+  co = checkout
