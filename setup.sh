@@ -11,8 +11,9 @@ if ! command -v brew > /dev/null; then
         "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 apps=(
-  zulu8
   divvy
   intellij-idea
   # google-chrome
@@ -26,6 +27,7 @@ brew install --cask --appdir="/Users/$USER/Applications" ${apps[@]}
 dotfiles=(
   profile
   gitconfig
+  vimrc
 )
 
 for file in ${dotfiles[@]}; do

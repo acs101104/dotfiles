@@ -7,7 +7,7 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 
-" set hlsearch
+set hlsearch
 set backspace=indent,eol,start
 set clipboard^=unnamed
 
