@@ -2,7 +2,8 @@
 
 set -eux
 
-# chsh -s /bin/bash
+# Swithc shell to bash at first
+chsh -s /bin/bash
 
 DIR="$( cd "$(dirname "${BASH_SOURCE[0]}")" && pwd )"
 
@@ -13,15 +14,18 @@ fi
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+# zule8 has been removed
+# Need to download manually from offical website
 apps=(
   divvy
-  intellij-idea
-  # google-chrome
-  # dash
+  dash
+  notion
   # fliqlo
-  # notion
+  google-chrome
+  intellij-idea
 )
 
+# --appdir means that only install thost apps for current user
 brew install --cask --appdir="/Users/$USER/Applications" ${apps[@]}
 
 dotfiles=(

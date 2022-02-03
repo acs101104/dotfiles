@@ -11,7 +11,7 @@ if [ -x /opt/homebrew/bin/brew ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-if command -v kubectl &> /dev/null; then
+if command -v kubectl > /dev/null; then
     alias k='kubectl'
     alias do='--dry-run=client -o yaml'
     alias now='--force --grace-period 0'
@@ -39,7 +39,7 @@ git_info() {
 	git rev-parse --is-inside-work-tree &>/dev/null || return
 
 	branch=$(git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||')
-	dirty=$(git diff --quiet --ignore-submodules HEAD &>/dev/null ||  echo -e "*")
+	dirty=$(git diff --quiet --ignore-submodules HEAD &>/dev/null || echo -e "*")
 
 	echo -e " on "$LIGHTRED$branch$dirty$RESET
 }
