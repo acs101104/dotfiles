@@ -25,7 +25,7 @@ apps=(
   intellij-idea
 )
 
-# --appdir means that only install thost apps for current user
+# --appdir means that only install those apps for current user
 brew install --cask --appdir="/Users/$USER/Applications" ${apps[@]}
 
 dotfiles=(
