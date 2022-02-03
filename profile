@@ -7,7 +7,7 @@ alias vi='vim'
 alias ps="ps aux"
 alias du='du -sh'
 
-if command -v brew &> /dev/null; then
+if [ -x /opt/homebrew/bin/brew ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
