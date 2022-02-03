@@ -2,7 +2,7 @@
 
 set -eux
 
-# Swithc shell to bash at first
+# Switch shell at first
 chsh -s /bin/bash
 
 DIR="$( cd "$(dirname "${BASH_SOURCE[0]}")" && pwd )"
