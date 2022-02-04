@@ -23,6 +23,7 @@ apps=(
   # fliqlo
   google-chrome
   intellij-idea
+  homebrew/cask-versions/discord-ptb
 )
 
 # --appdir means that only install those apps for current user
