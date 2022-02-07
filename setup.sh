@@ -2,8 +2,10 @@
 
 set -eux
 
-# Switch shell at first
-chsh -s /bin/bash
+# Switch default shell to bash
+if [ "$SHELL" != "/bin/bash" ]; then
+    chsh -s /bin/bash
+fi
 
 DIR="$( cd "$(dirname "${BASH_SOURCE[0]}")" && pwd )"
 
@@ -14,16 +16,12 @@ fi
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# zule8 has been removed
-# Need to download manually from offical website
+# zulu8 need to download from offical website manually
 apps=(
   divvy
-  dash
   notion
-  # fliqlo
-  google-chrome
+  # appcleaner
   intellij-idea
-  homebrew/cask-versions/discord-ptb
 )
 
 # --appdir means that only install those apps for current user
