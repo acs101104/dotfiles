@@ -9,21 +9,23 @@ if [ "$SHELL" != "/bin/bash" ]; then
     chsh -s /bin/bash
 fi
 
-# Installing homebrew
-if ! command -v brew > /dev/null; then
-    /bin/bash -c \
-        "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+if [ $(uname -s) == "Darwin" ]; then
+    # Installing homebrew
+    if ! command -v brew > /dev/null; then
+        /bin/bash -c \
+            "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
+
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+
+    # Installing desktop applications
+    apps=(
+        appcleaner
+        google-chrome
+        visual-studio-code
+    )
+    brew install --cask --appdir="/Users/$USER/Applications" ${apps[@]}
 fi
-
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
-# Installing desktop applications
-apps=(
-    appcleaner
-    google-chrome
-    visual-studio-code
-)
-brew install --cask --appdir="/Users/$USER/Applications" ${apps[@]}
 
 # Copy dot files
 dotfiles=(
