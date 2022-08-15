@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
 
-set -eux
+set -e
 
-# Switch default shell to bash
+DIR="$( cd "$(dirname "${BASH_SOURCE[0]}")" && pwd )"
+
+# Change default shell to bash
 if [ "$SHELL" != "/bin/bash" ]; then
     chsh -s /bin/bash
 fi
 
-DIR="$( cd "$(dirname "${BASH_SOURCE[0]}")" && pwd )"
-
+# Installing homebrew
 if ! command -v brew > /dev/null; then
     /bin/bash -c \
         "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -16,23 +17,20 @@ fi
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# zulu8 need to download from offical website manually
+# Installing desktop applications
 apps=(
-  divvy
-  notion
-  # appcleaner
-  intellij-idea
+    appcleaner
+    google-chrome
+    visual-studio-code
 )
-
-# --appdir means that only install those apps for current user
 brew install --cask --appdir="/Users/$USER/Applications" ${apps[@]}
 
+# Copy dot files
 dotfiles=(
-  profile
-  gitconfig
-  vimrc
+    profile
+    gitconfig
+    vimrc
 )
-
 for file in ${dotfiles[@]}; do
   cp $DIR/$file ~/.$file
 done
